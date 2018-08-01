@@ -20,9 +20,9 @@ public class Card {
     public int givePointsToTheCard() {
         int point;
         //カードの絵柄がJackかQueenかKingだった場合は10点
-        if (rank == CardRankEnum.JACK || rank == CardRankEnum.QUEEN || rank == CardRankEnum.KING) {
+        if (rank.isFaceCard()) {
             point = 10;
-        } else if (rank == CardRankEnum.ACE) {    //カードの絵柄がAだった場合は1点
+        } else if (rank.isAce()) {    //カードの絵柄がAだった場合は1点
             point = 1;
         } else {    //それ以外はカードに書かれている数の点数
             point = rank.getRank();

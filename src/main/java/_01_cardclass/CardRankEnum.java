@@ -1,5 +1,7 @@
 package _01_cardclass;
 
+import java.util.Arrays;
+
 public enum CardRankEnum {
     ACE(1),
     TWO(2),
@@ -27,13 +29,18 @@ public enum CardRankEnum {
         return rank;
     }
 
+    public boolean isFaceCard() {
+        return Arrays.asList(JACK, QUEEN, KING).contains(this);
+       // return this == JACK || this == QUEEN || this == KING;
+    }
+
+    public boolean isAce() {
+        return this == ACE;
+    }
+
     //toString
     @Override
     public String toString() {
-        if (name().equals("ACE") || name().equals("JACK") || name().equals("QUEEN") || name().equals("KING")) {
-            return name();      //name()はEnumの名前を返す
-        } else {
-            return String.valueOf(rank);
-        }
+        return isAce() || isFaceCard() ? name() : String.valueOf(rank);
     }
 }
