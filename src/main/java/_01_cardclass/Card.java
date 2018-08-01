@@ -10,9 +10,10 @@ public class Card {
         this.rank = rank;
     }
 
+    //toString
     @Override
     public String toString() {
-        return suit + "-" + rank;
+        return suit.toString() + "-" + rank.toString();     //suitはObjectの、rankは自分で書いたCardRankEnumのtoStoringに飛ぶ
     }
 
     //カードに点数をつける

@@ -26,4 +26,14 @@ public enum CardRankEnum {
     public int getRank() {
         return rank;
     }
+
+    //toString
+    @Override
+    public String toString() {
+        if (name().equals("ACE") || name().equals("JACK") || name().equals("QUEEN") || name().equals("KING")) {
+            return name();      //name()はEnumの名前を返す
+        } else {
+            return String.valueOf(rank);
+        }
+    }
 }

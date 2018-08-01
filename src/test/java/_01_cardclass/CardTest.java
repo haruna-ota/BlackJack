@@ -24,6 +24,6 @@ public class CardTest {
         assertEquals("HEART-JACK", card2.toString());
         assertEquals("CLUB-QUEEN", card3.toString());
         assertEquals("HEART-KING", card4.toString());
-        assertEquals("DIAMOND-FIVE", card5.toString());
+        assertEquals("DIAMOND-5", card5.toString());
     }
 }
