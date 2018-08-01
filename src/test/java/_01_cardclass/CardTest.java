@@ -19,5 +19,11 @@ public class CardTest {
         assertSame(10, card3.givePointsToTheCard());    //絵札は10点
         assertSame(10, card4.givePointsToTheCard());    //絵札は10点
         assertSame(5, card5.givePointsToTheCard());     //その他はカードの数字そのままの点
+
+        assertEquals("SPADE-ACE", card1.toString());
+        assertEquals("HEART-JACK", card2.toString());
+        assertEquals("CLUB-QUEEN", card3.toString());
+        assertEquals("HEART-KING", card4.toString());
+        assertEquals("DIAMOND-FIVE", card5.toString());
     }
 }
