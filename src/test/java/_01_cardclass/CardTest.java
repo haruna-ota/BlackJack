@@ -5,11 +5,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CardTest {
-    private Card card1 = new Card(CardMarkEnum.SPADE, CardNameEnum.ACE);    //スペードのエースのカード
-    private Card card2 = new Card(CardMarkEnum.HEART, CardNameEnum.JACK); //ハートのジャックのカード
-    private Card card3 = new Card(CardMarkEnum.CLUB, CardNameEnum.QUEEN); //クラブのクイーンのカード
-    private Card card4 = new Card(CardMarkEnum.HEART, CardNameEnum.KING); //ハートのキングのカード
-    private Card card5 = new Card(CardMarkEnum.DIAMOND, CardNameEnum.FIVE);  //ダイヤの5のカード
+    private Card card1 = new Card(CardSuitEnum.SPADE, CardRankEnum.ACE);    //スペードのエースのカード
+    private Card card2 = new Card(CardSuitEnum.HEART, CardRankEnum.JACK); //ハートのジャックのカード
+    private Card card3 = new Card(CardSuitEnum.CLUB, CardRankEnum.QUEEN); //クラブのクイーンのカード
+    private Card card4 = new Card(CardSuitEnum.HEART, CardRankEnum.KING); //ハートのキングのカード
+    private Card card5 = new Card(CardSuitEnum.DIAMOND, CardRankEnum.FIVE);  //ダイヤの5のカード
 
     //テスト
     @Test
