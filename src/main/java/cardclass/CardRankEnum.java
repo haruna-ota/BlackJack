@@ -1,4 +1,4 @@
-package _01_cardclass;
+package cardclass;
 
 import java.util.Arrays;
 
@@ -29,13 +29,13 @@ public enum CardRankEnum {
         return rank;
     }
 
-    public boolean isFaceCard() {
-        return Arrays.asList(JACK, QUEEN, KING).contains(this);
-       // return this == JACK || this == QUEEN || this == KING;
+    public boolean isFaceCard() {   //絵札かどうか調べるメソッド
+        return Arrays.asList(JACK, QUEEN, KING).contains(this);     //自分(this)が絵札かどうか聞いている
+        // return this == JACK || this == QUEEN || this == KING;
     }
 
-    public boolean isAce() {
-        return this == ACE;
+    public boolean isAce() {    //エースかどうか調べるメソッド
+        return this == ACE;     //自分(this)がエースかどうか聞いている
     }
 
     //toString
