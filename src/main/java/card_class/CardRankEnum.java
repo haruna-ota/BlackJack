@@ -1,4 +1,4 @@
-package cardclass;
+package card_class;
 
 import java.util.Arrays;
 

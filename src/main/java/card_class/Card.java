@@ -1,4 +1,4 @@
-package cardclass;
+package card_class;
 
 public class Card {
     private CardSuitEnum suit;    //カードのマーク

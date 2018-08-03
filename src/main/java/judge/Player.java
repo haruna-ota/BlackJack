@@ -1,10 +1,10 @@
 package judge;
 
-import cardclass.Card;
+import card_class.Card;
 
 import java.util.List;
 
-public class Player {
+public class Player implements Players {
 
     private List<Card> handOfP; //プレイヤーの手札
 
@@ -14,10 +14,11 @@ public class Player {
     }
 
     //プレイヤーの手札を計算するメソッド
+    @Override
     public int calculateTotalPoint() {
         int resultOfP = 0;
-        for (int i = 0; i < handOfP.size(); i++) {
-            resultOfP = resultOfP + handOfP.get(i).givePointsToTheCard();
+        for (Card aHandOfP : handOfP) {     //拡張for文
+            resultOfP = resultOfP + aHandOfP.givePointsToTheCard();
         }
         return resultOfP;
     }

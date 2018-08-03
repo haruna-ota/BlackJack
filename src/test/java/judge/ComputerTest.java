@@ -1,13 +1,13 @@
 package judge;
 
-import cardclass.Card;
+import card_class.Card;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static cardclass.CardRankEnum.*;
-import static cardclass.CardSuitEnum.*;
+import static card_class.CardRankEnum.*;
+import static card_class.CardSuitEnum.*;
 import static org.junit.Assert.*;
 
 public class ComputerTest {
