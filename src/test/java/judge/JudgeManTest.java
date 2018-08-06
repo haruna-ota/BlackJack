@@ -15,10 +15,10 @@ public class JudgeManTest {
     //テストパターン1：プレイヤーが勝つ場合
     @Test
     public void JudgeMan1() {
-        List<Card> handsOfP = Arrays.asList(new Card(HEART, JACK), new Card(HEART, QUEEN)); //プレイヤーの手札を生成
-        List<Card> handsOfC = Arrays.asList(new Card(HEART, ACE), new Card(SPADE, ACE));    //コンピュータの手札を生成
+        List<Card> handOfP = Arrays.asList(new Card(HEART, JACK), new Card(HEART, QUEEN)); //プレイヤーの手札を生成
+        List<Card> handOfC = Arrays.asList(new Card(HEART, ACE), new Card(SPADE, ACE));    //コンピュータの手札を生成
 
-        JudgeMan judgeMan = new JudgeMan(new Player(handsOfP), new Computer(handsOfC));
+        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)));
         assertEquals(
                 "プレイヤーの勝ちです！",
                 judgeMan.decideOnWinningOrLosing()
@@ -28,10 +28,10 @@ public class JudgeManTest {
     //テストパターン2：コンピュータが勝つ場合
     @Test
     public void JudgeMan2() {
-        List<Card> handsOfP = Arrays.asList(new Card(HEART, ACE), new Card(HEART, FIVE));   //プレイヤーの手札を生成
-        List<Card> handsOfC = Arrays.asList(new Card(HEART, TEN), new Card(SPADE, KING));   //コンピュータの手札を生成
+        List<Card> handOfP = Arrays.asList(new Card(HEART, ACE), new Card(HEART, FIVE));   //プレイヤーの手札を生成
+        List<Card> handOfC = Arrays.asList(new Card(HEART, TEN), new Card(SPADE, KING));   //コンピュータの手札を生成
 
-        JudgeMan judgeMan = new JudgeMan(new Player(handsOfP), new Computer(handsOfC));
+        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)));
         assertEquals(
                 "コンピュータの勝ちです！",
                 judgeMan.decideOnWinningOrLosing()
@@ -41,10 +41,10 @@ public class JudgeManTest {
     //テストパターン3：引き分けの場合
     @Test
     public void JudgeMan3() {
-        List<Card> handsOfP = Arrays.asList(new Card(HEART, JACK), new Card(HEART, QUEEN)); //プレイヤーの手札を生成
-        List<Card> handsOfC = Arrays.asList(new Card(HEART, TEN), new Card(SPADE, KING));   //コンピュータの手札を生成
+        List<Card> handOfP = Arrays.asList(new Card(HEART, JACK), new Card(HEART, QUEEN)); //プレイヤーの手札を生成
+        List<Card> handOfC = Arrays.asList(new Card(HEART, TEN), new Card(SPADE, KING));   //コンピュータの手札を生成
 
-        JudgeMan judgeMan = new JudgeMan(new Player(handsOfP), new Computer(handsOfC));
+        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)));
         assertEquals(
                 "引き分けです",
                 judgeMan.decideOnWinningOrLosing()
