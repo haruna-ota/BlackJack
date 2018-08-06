@@ -1,4 +1,4 @@
-package _01_cardclass;
+package card_class;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package _01_cardclass;
+package card_class;
 
 public enum CardSuitEnum {
     HEART,  //ハート
