@@ -13,8 +13,8 @@ public class Hand {
     }
 
     //カードを手札に追加する
-    public void addCardToHand(Card cardToAdd) {
-        cards.add(cardToAdd);   //手札にカードを追加する
+    public void add(Card card) {
+        cards.add(card);   //手札にカードを追加する
     }
 
     //手札を計算するメソッド

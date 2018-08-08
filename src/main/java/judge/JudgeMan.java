@@ -4,7 +4,6 @@ import card_class.Card;
 import deck_class.Deck;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class JudgeMan {
@@ -35,15 +34,10 @@ public class JudgeMan {
     //勝負開始の準備をする
     public void prepareToStart() {
         //山札から1枚ずつ交互に配る(プレイヤー:2枚,コンピュータ:2枚)
-        for (int i = 0; i < 4; i++) {
-            if (i % 2 == 0) {   //山札上から偶数番目の枚数の時はプレイヤーに配る
-                Card cardOfP = deck.drawACard();    //山札から1枚カードをもらう
-                player.addCards(cardOfP);           //手札に追加する
-            } else {            //山札上から奇数番目の枚数の時はコンピュータに配る
-                Card cardOfC = deck.drawACard();    //山札から1枚カードをもらう
-                computer.addCards(cardOfC);         //手札に追加する
-            }
-        }
+        player.addCards(deck.drawACard());      //プレイヤー1枚目
+        computer.addCards(deck.drawACard());    //コンピュータ1枚目
+        player.addCards(deck.drawACard());      //プレイヤー2枚目
+        computer.addCards(deck.drawACard());    //コンピュータ2枚目
     }
 
     //勝敗を決めるメソッド（プレイヤーとコンピュータそれぞれの手札の合計点を比べる）

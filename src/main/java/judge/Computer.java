@@ -13,7 +13,7 @@ public class Computer {
 
     //審判からカードをもらう
     public void addCards(Card cardOfC) {
-        handOfC.addCardToHand(cardOfC);   //審判からもらったカード(1枚)を、手札に追加する
+        handOfC.add(cardOfC);   //審判からもらったカード(1枚)を、手札に追加する
     }
 
     //コンピュータの手札を計算するメソッド
