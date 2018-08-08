@@ -31,12 +31,9 @@ public class Deck {    //山札のクラス
                 cardList.addAll(Arrays.asList(new Card(suit, rank)));
             }
         }
-        return new Deck(cardList);
-    }
-
-    //山札をシャッフルする
-    public void shuffle() {
-        Collections.shuffle(cards);
+        Collections.shuffle(cardList);      //52枚のカードをシャッフルする
+        Deck deck = new Deck(cardList);     //シャッフルしたカードを山札にする
+        return deck;
     }
 
     //カードの残り枚数を確認
