@@ -27,6 +27,7 @@ public class JudgeMan {
         Player player = new Player(new Hand(handOfP));
         Computer computer = new Computer(new Hand(handOfC));
         Deck deck = Deck.create();
+        deck.shuffle();     //デッキをシャッフルする
 
         return new JudgeMan(player, computer, deck);
     }
