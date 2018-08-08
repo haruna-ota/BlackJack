@@ -1,6 +1,7 @@
 package judge;
 
 import card_class.Card;
+import deck_class.Deck;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -17,8 +18,9 @@ public class JudgeManTest {
     public void JudgeMan1() {
         List<Card> handOfP = Arrays.asList(new Card(HEART, JACK), new Card(HEART, QUEEN)); //プレイヤーの手札を生成
         List<Card> handOfC = Arrays.asList(new Card(HEART, ACE), new Card(SPADE, ACE));    //コンピュータの手札を生成
+        Deck deck = Deck.create();  //山札を生成
 
-        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)));
+        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
         assertEquals(
                 "プレイヤーの勝ちです！",
                 judgeMan.decideOnWinningOrLosing()
@@ -30,8 +32,9 @@ public class JudgeManTest {
     public void JudgeMan2() {
         List<Card> handOfP = Arrays.asList(new Card(HEART, ACE), new Card(HEART, FIVE));   //プレイヤーの手札を生成
         List<Card> handOfC = Arrays.asList(new Card(HEART, TEN), new Card(SPADE, KING));   //コンピュータの手札を生成
+        Deck deck = Deck.create();  //山札を生成
 
-        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)));
+        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
         assertEquals(
                 "コンピュータの勝ちです！",
                 judgeMan.decideOnWinningOrLosing()
@@ -43,8 +46,9 @@ public class JudgeManTest {
     public void JudgeMan3() {
         List<Card> handOfP = Arrays.asList(new Card(HEART, JACK), new Card(HEART, QUEEN)); //プレイヤーの手札を生成
         List<Card> handOfC = Arrays.asList(new Card(HEART, TEN), new Card(SPADE, KING));   //コンピュータの手札を生成
+        Deck deck = Deck.create();  //山札を生成
 
-        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)));
+        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
         assertEquals(
                 "引き分けです",
                 judgeMan.decideOnWinningOrLosing()

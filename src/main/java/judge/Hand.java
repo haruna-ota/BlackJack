@@ -12,6 +12,11 @@ public class Hand {
         this.cards = cards;
     }
 
+    //カードを手札に追加する
+    public void add(Card card) {
+        cards.add(card);   //手札にカードを追加する
+    }
+
     //手札を計算するメソッド
     public int calculateTotalPoint() {
         int sum = 0;
