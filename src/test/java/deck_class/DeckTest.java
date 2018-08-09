@@ -13,14 +13,10 @@ public class DeckTest {
         //山札のカードの枚数を確認(52枚あればok)
         assertSame(52, deck.getRemainingCards());
 
-        //山札のカードの1枚目を引く(HEART-ACE)
-        assertEquals("HEART-ACE", deck.drawACard().toString());
+        deck.drawACard();   //カードを1枚引く
 
-        //山札のカードの2枚目を引く(HEART-2)
-        assertEquals("HEART-2", deck.drawACard().toString());
-
-        //山札のカードの枚数を確認(50枚あればok)
-        assertSame(50, deck.getRemainingCards());
+        //山札のカードの枚数を確認(51枚あればok)
+        assertSame(51, deck.getRemainingCards());
 
     }
 }
