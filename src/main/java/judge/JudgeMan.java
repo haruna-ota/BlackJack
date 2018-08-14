@@ -39,7 +39,29 @@ public class JudgeMan {
         player.addCards(deck.drawACard());      //プレイヤー2枚目
         computer.addCards(deck.drawACard());    //コンピュータ2枚目
     }
-    
+
+    //勝負を開始し、プレイヤーとコンピュータにカードを引くかどうか聞き続ける（引かないと言われるまで）
+    public void askWhetherToDrawACard() {
+        boolean askFlag = true;     //プレイヤーとコンピュータに引くかどうか聞くフラグ
+        boolean drawFlagOfP = true; //プレイヤーの答えフラグ
+        boolean drawFlagOfC = true; //コンピュータの答えフラグ
+
+        while (askFlag) {
+            if (!player.isDrawingACard()) {     //プレイヤーが引かないと言ったら
+                drawFlagOfP = false;
+            }
+            if (!computer.isDrawingACard()) {     //コンピュータが引かないと言ったら
+                drawFlagOfC = false;
+            }
+            if (!drawFlagOfP && !drawFlagOfC) { //プレイヤーもコンピュータも引かないと言ったらループを抜ける
+                askFlag = false;
+            }
+        }
+        //勝敗発表に移る
+        System.out.println(decideOnWinningOrLosing());
+
+    }
+
     //勝敗を決めるメソッド（プレイヤーとコンピュータそれぞれの手札の合計点を比べる）
     public String decideOnWinningOrLosing() {
         if (player.calculateTotalPoint() > computer.calculateTotalPoint()) {
