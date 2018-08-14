@@ -43,16 +43,28 @@ public class JudgeMan {
     //勝負を開始し、プレイヤーとコンピュータにカードを引くかどうか聞き続ける（引かないと言われるまで）
     public void askWhetherToDrawACard() {
         boolean askFlag = true;     //プレイヤーとコンピュータに引くかどうか聞くフラグ
-        boolean drawFlagOfP = true; //プレイヤーの答えフラグ
-        boolean drawFlagOfC = true; //コンピュータの答えフラグ
+        boolean drawFlagOfP = true; //プレイヤーに聞くかどうかフラグ
+        boolean drawFlagOfC = true; //コンピュータに聞くかどうか答えフラグ
 
         while (askFlag) {
-            if (!player.isDrawingACard()) {     //プレイヤーが引かないと言ったら
-                drawFlagOfP = false;
+            //プレイヤーに引くかどうか聞く
+            if (drawFlagOfP) {
+                if (!player.isDrawingACard()) {
+                    drawFlagOfP = false;
+                } else {
+                    player.addCards(deck.drawACard());      //カードを1枚引いて、手札に追加する
+                }
             }
-            if (!computer.isDrawingACard()) {     //コンピュータが引かないと言ったら
-                drawFlagOfC = false;
+
+            //コンピュータに引くかどうか聞く
+            if (drawFlagOfC) {
+                if (!computer.isDrawingACard()) {
+                    drawFlagOfC = false;
+                } else {
+                    computer.addCards(deck.drawACard());    //カードを1枚引いて、手札に追加する
+                }
             }
+
             if (!drawFlagOfP && !drawFlagOfC) { //プレイヤーもコンピュータも引かないと言ったらループを抜ける
                 askFlag = false;
             }
