@@ -20,4 +20,9 @@ public class Computer {
     public int calculateTotalPoint() {
         return handOfC.calculateTotalPoint();
     }
+
+    //山札からカードを引くかどうか答える
+    public boolean isDrawingACard() {
+        return false;  //今回は必ず引かないと答える
+    }
 }

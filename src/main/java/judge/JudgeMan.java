@@ -39,7 +39,7 @@ public class JudgeMan {
         player.addCards(deck.drawACard());      //プレイヤー2枚目
         computer.addCards(deck.drawACard());    //コンピュータ2枚目
     }
-
+    
     //勝敗を決めるメソッド（プレイヤーとコンピュータそれぞれの手札の合計点を比べる）
     public String decideOnWinningOrLosing() {
         if (player.calculateTotalPoint() > computer.calculateTotalPoint()) {
