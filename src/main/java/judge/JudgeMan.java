@@ -40,6 +40,15 @@ public class JudgeMan {
         computer.addCards(deck.drawACard());    //コンピュータ2枚目
     }
 
+    //勝負を開始し、プレイヤーとコンピュータにカードを引くかどうか聞き続ける（引かないと言われるまで）
+    public int askWhetherToDrawACard() {
+        int askFlag = 0;    //プレイヤーとコンピュータにカードを引くか聞くフラグ（0:聞く,1:聞かない）
+        if (player.answerWhetherToDrawACard() == 1 && computer.answerWhetherToDrawACard() == 1) {
+            askFlag = 1;    //プレイヤーもコンピュータも両方引かないと言った時
+        }
+        return askFlag;
+    }
+
     //勝敗を決めるメソッド（プレイヤーとコンピュータそれぞれの手札の合計点を比べる）
     public String decideOnWinningOrLosing() {
         if (player.calculateTotalPoint() > computer.calculateTotalPoint()) {

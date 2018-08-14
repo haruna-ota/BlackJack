@@ -20,4 +20,11 @@ public class Player {
     public int calculateTotalPoint() {
         return handOfP.calculateTotalPoint();
     }
+
+    //山札からカードを引くかどうか答える
+    public int answerWhetherToDrawACard(){
+        int drawFlagOfP = 1;    //プレイヤーのフラグ（0:引く,1:引かない（今回は初めから引かないと言う））
+        return drawFlagOfP;
+    }
+
 }

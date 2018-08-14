@@ -20,4 +20,10 @@ public class Computer {
     public int calculateTotalPoint() {
         return handOfC.calculateTotalPoint();
     }
+
+    //山札からカードを引くかどうか答える
+    public int answerWhetherToDrawACard() {
+        int drawFlagOfC = 1;    //コンピュータのフラグ（0:引く,1:引かない（今回は初めから引かないと言う））
+        return drawFlagOfC;
+    }
 }
