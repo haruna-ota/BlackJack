@@ -21,7 +21,6 @@ public class JudgeManTest {
         Deck deck = Deck.create();  //山札を生成
 
         JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
-        assertSame(1,judgeMan.askWhetherToDrawACard());
         assertEquals(
                 "プレイヤーの勝ちです！",
                 judgeMan.decideOnWinningOrLosing()
@@ -36,7 +35,6 @@ public class JudgeManTest {
         Deck deck = Deck.create();  //山札を生成
 
         JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
-        assertSame(1,judgeMan.askWhetherToDrawACard());
         assertEquals(
                 "コンピュータの勝ちです！",
                 judgeMan.decideOnWinningOrLosing()
@@ -51,7 +49,6 @@ public class JudgeManTest {
         Deck deck = Deck.create();  //山札を生成
 
         JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
-        assertSame(1,judgeMan.askWhetherToDrawACard());
         assertEquals(
                 "引き分けです",
                 judgeMan.decideOnWinningOrLosing()

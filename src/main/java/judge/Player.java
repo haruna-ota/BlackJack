@@ -22,9 +22,8 @@ public class Player {
     }
 
     //山札からカードを引くかどうか答える
-    public int answerWhetherToDrawACard(){
-        int drawFlagOfP = 1;    //プレイヤーのフラグ（0:引く,1:引かない（今回は初めから引かないと言う））
-        return drawFlagOfP;
+    public boolean isAnswerWhetherToDrawACard() {
+        return false;  //今回は必ず引かないと答える
     }
 
 }

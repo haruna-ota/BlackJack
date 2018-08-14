@@ -22,8 +22,7 @@ public class Computer {
     }
 
     //山札からカードを引くかどうか答える
-    public int answerWhetherToDrawACard() {
-        int drawFlagOfC = 1;    //コンピュータのフラグ（0:引く,1:引かない（今回は初めから引かないと言う））
-        return drawFlagOfC;
+    public boolean isAnswerWhetherToDrawACard() {
+        return false;  //今回は必ず引かないと答える
     }
 }
