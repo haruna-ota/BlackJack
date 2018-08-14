@@ -22,7 +22,7 @@ public class Player {
     }
 
     //山札からカードを引くかどうか答える
-    public boolean isAnswerWhetherToDrawACard() {
+    public boolean isDrawingACard() {
         return false;  //今回は必ず引かないと答える
     }
 

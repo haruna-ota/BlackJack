@@ -16,7 +16,7 @@ public class ComputerTest {
     public void Computer() {
         List<Card> handOfC = Arrays.asList(new Card(HEART, ACE), new Card(SPADE, ACE));    //コンピュータの手札を生成
         Computer computer = new Computer(new Hand(handOfC));
-        assertFalse(computer.isAnswerWhetherToDrawACard());
+        assertFalse(computer.isDrawingACard());
     }
 
 }
