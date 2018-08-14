@@ -42,33 +42,22 @@ public class JudgeMan {
 
     //勝負を開始し、プレイヤーとコンピュータにカードを引くかどうか聞き続ける（引かないと言われるまで）
     public void askWhetherToDrawACard() {
-        boolean askFlag = true;     //プレイヤーとコンピュータに引くかどうか聞くフラグ
-        boolean drawFlagOfP = true; //プレイヤーに聞くかどうかフラグ
-        boolean drawFlagOfC = true; //コンピュータに聞くかどうか答えフラグ
+        boolean isPlayerFixed = false;  //プレイヤーの手札は決まりましたか？（これで勝負しますか？）（初期設定では決まっていない:false）
 
-        while (askFlag) {
+        while (!isPlayerFixed || computer.isDrawingACard()) {   //まだプレイヤーの手札が決まっていない or コンピュータが引くと言っている場合
             //プレイヤーに引くかどうか聞く
-            if (drawFlagOfP) {
-                if (!player.isDrawingACard()) {
-                    drawFlagOfP = false;
-                } else {
-                    player.addCards(deck.drawACard());      //カードを1枚引いて、手札に追加する
-                }
+            if (!isPlayerFixed && player.isDrawingACard()) {    //まだプレイヤーの手札が決まっていない かつ　カードを引くと言った場合
+                player.addCards(deck.drawACard());      //カードを1枚引いて、手札に追加する
+            } else {
+                isPlayerFixed = true;
             }
 
             //コンピュータに引くかどうか聞く
-            if (drawFlagOfC) {
-                if (!computer.isDrawingACard()) {
-                    drawFlagOfC = false;
-                } else {
-                    computer.addCards(deck.drawACard());    //カードを1枚引いて、手札に追加する
-                }
-            }
-
-            if (!drawFlagOfP && !drawFlagOfC) { //プレイヤーもコンピュータも引かないと言ったらループを抜ける
-                askFlag = false;
+            if (computer.isDrawingACard()) {
+                computer.addCards(deck.drawACard());    //カードを1枚引いて、手札に追加する
             }
         }
+
         //勝敗発表に移る
         System.out.println(decideOnWinningOrLosing());
 
