@@ -23,6 +23,7 @@ public class Computer {
 
     //山札からカードを引くかどうか答える
     public boolean isDrawingACard() {
-        return false;  //今回は必ず引かないと答える
+        //コンピュータの手札の合計が現在16点以下の場合は必ず引くと答える(trueを返す)
+        return calculateTotalPoint() <= 16;
     }
 }
