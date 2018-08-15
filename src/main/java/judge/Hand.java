@@ -12,6 +12,13 @@ public class Hand {
         this.cards = cards;
     }
 
+    //toString
+    @Override
+    public String toString() {
+        return cards.toString();    //現在の手札表示用
+    }
+
+
     //カードを手札に追加する
     public void add(Card card) {
         cards.add(card);   //手札にカードを追加する

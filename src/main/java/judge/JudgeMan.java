@@ -65,6 +65,7 @@ public class JudgeMan {
 
     //勝敗を決めるメソッド（プレイヤーとコンピュータそれぞれの手札の合計点を比べる）
     public String decideOnWinningOrLosing() {
+        System.out.println("プレイヤーの点数：" + player.calculateTotalPoint() + "点," + "コンピュータの点数：" + computer.calculateTotalPoint() + "点");
         if (player.calculateTotalPoint() > computer.calculateTotalPoint()) {
             return "プレイヤーの勝ちです！";
         } else if (player.calculateTotalPoint() < computer.calculateTotalPoint()) {

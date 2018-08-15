@@ -25,7 +25,8 @@ public class Player {
 
     //山札からカードを引くかどうか答える
     public boolean isDrawingACard() {
-        System.out.println("プレイヤー：山札からカードを1枚引きますか？（y or nを入力して下さい）");
+        System.out.println("プレイヤー現在の手札:" + handOfP.toString());
+        System.out.println("山札からカードを1枚引きますか？（y or nを入力して下さい）");
 
         Scanner sc = new Scanner(System.in);
 
