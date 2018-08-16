@@ -43,13 +43,14 @@ public class JudgeMan {
     //勝負を開始し、プレイヤーとコンピュータにカードを引くかどうか聞き続ける（引かないと言われるまで）
     public void askWhetherToDrawACard() {
         boolean isPlayerFixed = false;  //プレイヤーの手札は決まりましたか？（これで勝負しますか？）（初期設定では決まっていない:false）
+        boolean isComputerFixed = false;//コンピュータの手札は決まりましたか？（これで勝負しますか？）（初期設定では決まっていない:false）
 
-        while (!isPlayerFixed || computer.isDrawingACard()) {   //まだプレイヤーの手札が決まっていない or コンピュータが引くと言っている場合
+        while (!isPlayerFixed || !isComputerFixed) {   //まだプレイヤーの手札が決まっていない or コンピュータの手札が決まっていない場合
             //コンピュータの現在の手札の枚数を表示し、プレイヤーに引くかどうか聞く
             System.out.println("コンピュータの手札:" + computer.answerTheNumberOfCards() + "枚");
-            if (player.calculateTotalPoint() >= 21) {   //プレイヤーの手札が21点以上になったら引くかどうか聞かない
-                System.out.println("===== 手札の合計が21点を超えたため、勝敗判定に移ります =====\n");
-                break;  //プレイヤーの負けが確定するため勝敗判定へ移る
+            if (player.calculateTotalPoint() >= 21) {   //プレイヤーの手札が21点以上になったら引くか聞くのをやめる
+                System.out.println("===== 手札の合計が21点以上になったため、勝敗判定に移ります =====\n");
+                isPlayerFixed = true;  //手札の合計が21点以上になったため手札が決まったことにする
             } else if (!isPlayerFixed && player.isDrawingACard()) {    //まだプレイヤーの手札が決まっていない かつ　カードを引くと言った場合
                 player.addCards(deck.drawACard());      //カードを1枚引いて、手札に追加する
             } else {
@@ -57,8 +58,12 @@ public class JudgeMan {
             }
 
             //コンピュータに引くかどうか聞く
-            if (computer.isDrawingACard()) {
+            if (player.calculateTotalPoint() >= 22) {
+                isComputerFixed = true; //プレイヤーがバーストした時点でコンピュータの手札も決定(カードを引くのをやめる)
+            } else if (computer.isDrawingACard()) {
                 computer.addCards(deck.drawACard());    //カードを1枚引いて、手札に追加する
+            } else {
+                isComputerFixed = true;
             }
         }
 
