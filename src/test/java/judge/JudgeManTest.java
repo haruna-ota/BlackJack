@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
 
 
 public class JudgeManTest {
+    //両者ともバースト(22点以上)していない場合
     //テストパターン1：プレイヤーが勝つ場合
     @Test
     public void JudgeMan1() {
@@ -21,10 +22,7 @@ public class JudgeManTest {
         Deck deck = Deck.create();  //山札を生成
 
         JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
-        assertEquals(
-                "プレイヤーの勝ちです！",
-                judgeMan.decideOnWinningOrLosing()
-        );
+        assertEquals("プレイヤーの勝ちです！", judgeMan.decideOnWinningOrLosing());
     }
 
     //テストパターン2：コンピュータが勝つ場合
@@ -35,10 +33,7 @@ public class JudgeManTest {
         Deck deck = Deck.create();  //山札を生成
 
         JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
-        assertEquals(
-                "コンピュータの勝ちです！",
-                judgeMan.decideOnWinningOrLosing()
-        );
+        assertEquals("コンピュータの勝ちです！", judgeMan.decideOnWinningOrLosing());
     }
 
     //テストパターン3：引き分けの場合
@@ -49,9 +44,44 @@ public class JudgeManTest {
         Deck deck = Deck.create();  //山札を生成
 
         JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
-        assertEquals(
-                "引き分けです",
-                judgeMan.decideOnWinningOrLosing()
-        );
+        assertEquals("引き分けです", judgeMan.decideOnWinningOrLosing());
     }
+
+    //両者またはどちらかがバースト(22点以上)している場合
+    //テストパターン4：両者バースト(22点以上)でコンピュータが勝つ場合
+    @Test
+    public void JudgeMan4() {
+        List<Card> handOfP = Arrays.asList(new Card(HEART, TWO), new Card(HEART, QUEEN), new Card(HEART, KING));
+        List<Card> handOfC = Arrays.asList(new Card(SPADE, TWO), new Card(SPADE, QUEEN), new Card(SPADE, KING));
+        Deck deck = Deck.create();  //山札を生成
+
+        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
+        assertEquals("コンピュータの勝ちです！", judgeMan.decideOnWinningOrLosing());
+    }
+
+    //テストパターン5：コンピュータのみバースト(22点以上)でプレイヤーが勝つ場合
+    @Test
+    public void JudgeMan5() {
+        List<Card> handOfP = Arrays.asList(new Card(HEART, QUEEN), new Card(HEART, KING), new Card(HEART, ACE));
+        List<Card> handOfC = Arrays.asList(new Card(SPADE, TWO), new Card(SPADE, QUEEN), new Card(SPADE, KING));
+        Deck deck = Deck.create();
+
+        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
+        assertEquals("プレイヤーの勝ちです！", judgeMan.decideOnWinningOrLosing());
+
+    }
+
+    //テストパターン6：プレイヤーのみバースト(22点以上)でコンピュータが勝つ場合
+    @Test
+    public void JudgeMan6() {
+        List<Card> handOfP = Arrays.asList(new Card(HEART, QUEEN), new Card(HEART, KING), new Card(HEART, TWO));
+        List<Card> handOfC = Arrays.asList(new Card(SPADE, QUEEN), new Card(SPADE, SEVEN));
+        Deck deck = Deck.create();
+
+        JudgeMan judgeMan = new JudgeMan(new Player(new Hand(handOfP)), new Computer(new Hand(handOfC)), deck);
+        assertEquals("コンピュータの勝ちです！", judgeMan.decideOnWinningOrLosing());
+
+    }
+
+
 }

@@ -33,4 +33,9 @@ public class Hand {
         return sum;
     }
 
+    //現在の手札の枚数を答える
+    public int answerTheNumberOfCards(){
+        return cards.size();
+    }
+
 }

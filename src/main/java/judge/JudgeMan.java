@@ -45,8 +45,12 @@ public class JudgeMan {
         boolean isPlayerFixed = false;  //プレイヤーの手札は決まりましたか？（これで勝負しますか？）（初期設定では決まっていない:false）
 
         while (!isPlayerFixed || computer.isDrawingACard()) {   //まだプレイヤーの手札が決まっていない or コンピュータが引くと言っている場合
-            //プレイヤーに引くかどうか聞く
-            if (!isPlayerFixed && player.isDrawingACard()) {    //まだプレイヤーの手札が決まっていない かつ　カードを引くと言った場合
+            //コンピュータの現在の手札の枚数を表示し、プレイヤーに引くかどうか聞く
+            System.out.println("コンピュータの手札:" + computer.answerTheNumberOfCards() + "枚");
+            if (player.calculateTotalPoint() >= 21) {   //プレイヤーの手札が21点以上になったら引くかどうか聞かない
+                System.out.println("===== 手札の合計が21点を超えたため、勝敗判定に移ります =====\n");
+                break;  //プレイヤーの負けが確定するため勝敗判定へ移る
+            } else if (!isPlayerFixed && player.isDrawingACard()) {    //まだプレイヤーの手札が決まっていない かつ　カードを引くと言った場合
                 player.addCards(deck.drawACard());      //カードを1枚引いて、手札に追加する
             } else {
                 isPlayerFixed = true;
@@ -65,13 +69,22 @@ public class JudgeMan {
 
     //勝敗を決めるメソッド（プレイヤーとコンピュータそれぞれの手札の合計点を比べる）
     public String decideOnWinningOrLosing() {
-        System.out.println("プレイヤーの点数：" + player.calculateTotalPoint() + "点," + "コンピュータの点数：" + computer.calculateTotalPoint() + "点");
-        if (player.calculateTotalPoint() > computer.calculateTotalPoint()) {
-            return "プレイヤーの勝ちです！";
-        } else if (player.calculateTotalPoint() < computer.calculateTotalPoint()) {
+        //結果発表用表示
+        System.out.println("プレイヤーの最終手札:" + player.toString());
+        System.out.println("コンピュータの最終手札:" + computer.toString());
+        System.out.println("プレイヤーの点数：" + player.calculateTotalPoint() + "点,"
+                                   + "コンピュータの点数：" + computer.calculateTotalPoint() + "点");
+
+        if (player.calculateTotalPoint() >= 22) {   //プレイヤーの手札:22点以上→コンピュータの勝ち
             return "コンピュータの勝ちです！";
-        } else {
+        } else if (computer.calculateTotalPoint() >= 22) {
+            return "プレイヤーの勝ちです！";   //プレイヤーの手札:21点以下かつコンピュータの手札:22点以上→プレイヤーの勝ち
+        } else if (player.calculateTotalPoint() == computer.calculateTotalPoint()) { //プレイヤー,コンピュータ手札とも：21点以下かつ同点→引き分け
             return "引き分けです";
+        } else if (player.calculateTotalPoint() > computer.calculateTotalPoint()) { //プレイヤーの手札:21点以下かつ >コンピュータの手札→プレイヤーの勝ち
+            return "プレイヤーの勝ちです！";
+        } else {
+            return "コンピュータの勝ちです！";
         }
     }
 }

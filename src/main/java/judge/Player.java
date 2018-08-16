@@ -13,6 +13,12 @@ public class Player {
         this.handOfP = handOfP;
     }
 
+    //toString  プレイヤーの手札表示用
+    @Override
+    public String toString() {
+        return handOfP.toString();
+    }
+
     //審判からカードをもらう
     public void addCards(Card cardOfP) {
         handOfP.add(cardOfP);   //審判からもらったカード(1枚)を、手札に追加する
