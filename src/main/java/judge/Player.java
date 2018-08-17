@@ -13,6 +13,12 @@ public class Player {
         this.handOfP = handOfP;
     }
 
+    //toString  プレイヤーの手札表示用
+    @Override
+    public String toString() {
+        return handOfP.toString();
+    }
+
     //審判からカードをもらう
     public void addCards(Card cardOfP) {
         handOfP.add(cardOfP);   //審判からもらったカード(1枚)を、手札に追加する
@@ -25,7 +31,8 @@ public class Player {
 
     //山札からカードを引くかどうか答える
     public boolean isDrawingACard() {
-        System.out.println("プレイヤー：山札からカードを1枚引きますか？（y or nを入力して下さい）");
+        System.out.println("プレイヤー現在の手札:" + handOfP.toString());
+        System.out.println("山札からカードを1枚引きますか？（y or nを入力して下さい）");
 
         Scanner sc = new Scanner(System.in);
 
